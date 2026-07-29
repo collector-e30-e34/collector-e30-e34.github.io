@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E34 · Restoration Videos — ZWEI Garage</title>
+<meta name="description" content="Workshop video log for the BMW E34 520i — restoration and garage documentation clips, unedited.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   ZWEI — an E30 & E34 garage
+   Palette
+   anthrazit  #17191C   page ground (E34 world)
+   alpinweiss #F1EFE8   paper panel (E30 world)
+   sterling   #A9AEB5   metallic silver
+   blaupause  #8FB4C7   blueprint line
+   messing    #C2A878   single warm accent (brass)
+   hairline   #34383D / #D8D4C8
+   ================================================================ */
+
+:root{
+  --anthrazit:#17191C;
+  --anthrazit-2:#1E2125;
+  --alpinweiss:#F1EFE8;
+  --alpinweiss-2:#E9E6DC;
+  --sterling:#A9AEB5;
+  --sterling-panel:#999FA6;
+  --sterling-dim:#7C8189;
+  --ink-dim:#54585D;
+  --blaupause:#8FB4C7;
+  --blaupause-deep:#2E5468;
+  --messing:#C2A878;
+  --messing-deep:#7C6134;
+  --line-dark:#34383D;
+  --line-light:#D8D4C8;
+  --ink:#1B1D20;
+  --max:1180px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+body{
+  background:var(--sterling);
+  color:var(--ink);
+  font-family:"Archivo",system-ui,sans-serif;
+  font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+::selection{background:var(--messing);color:var(--ink)}
+
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--blaupause-deep);outline-offset:3px}
+img{max-width:100%;display:block}
+
+/* ---------- type roles ---------- */
+.display{
+  font-family:"Archivo",sans-serif;
+  font-variation-settings:"wdth" 125;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  line-height:1.02;
+}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.26em;
+  color:var(--ink-dim);
+}
+.mono{font-family:"IBM Plex Mono",monospace}
+
+/* ---------- header ---------- */
+header.site{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem 1.5rem;
+  background:color-mix(in srgb,var(--sterling) 88%,transparent);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line-dark);
+}
+header.site .mark{
+  font-family:"Archivo";font-variation-settings:"wdth" 125;
+  font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.95rem;
+}
+header.site .mark span{color:var(--blaupause-deep)}
+header.site nav{display:flex;gap:1.6rem;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+header.site nav a{color:var(--ink-dim);border-bottom:1px solid transparent;padding-bottom:2px}
+header.site nav a:hover,header.site nav a[aria-current]{color:var(--ink);border-color:var(--messing-deep)}
+
+/* ---------- section scaffolding ---------- */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.5rem}
+section.block{padding:6.5rem 0;border-bottom:1px solid var(--line-dark)}
+.block-head{display:flex;align-items:baseline;gap:1.25rem;margin-bottom:3rem;flex-wrap:wrap}
+.block-head h2{font-size:clamp(1.5rem,3.2vw,2.2rem)}
+.block-head .rule{flex:1;height:1px;background:var(--line-dark);min-width:60px}
+.block-head .tag{font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--blaupause-deep);letter-spacing:.18em}
+
+/* prose */
+.prose{max-width:60ch;font-weight:350;line-height:1.75;color:color-mix(in srgb,currentColor 82%,transparent)}
+.prose p+p{margin-top:1rem}
+.prose strong{color:currentColor}
+
+/* ---------- gallery ---------- */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media (max-width:800px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.gallery{grid-template-columns:1fr}}
+.gallery figure{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--sterling-panel);content-visibility:auto;contain-intrinsic-size:400px 300px}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;cursor:zoom-in}
+.gallery figure:hover img{transform:scale(1.03)}
+.gallery video{width:100%;height:100%;object-fit:cover;background:#000}
+.gallery figure.video-fig::after{
+  content:"▶";position:absolute;top:.5rem;left:.5rem;
+  width:1.6rem;height:1.6rem;border-radius:50%;background:color-mix(in srgb,var(--anthrazit) 70%,transparent);
+  color:var(--alpinweiss);font-size:.7rem;display:flex;align-items:center;justify-content:center;
+  pointer-events:none;
+}
+
+/* ---------- footer ---------- */
+footer.site{
+  padding:3rem 1.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+footer.site a{border-bottom:1px solid var(--line-dark)}
+footer.site a:hover{color:var(--ink);border-color:var(--messing-deep)}
+
+/* ---------- reveal on scroll (subtle, single effect) ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+.car-hero{padding:4.5rem 0 2rem;border-bottom:1px solid var(--line-dark)}
+.car-hero h1{font-size:clamp(2.4rem,6vw,4.2rem)}
+.car-hero .meta{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1rem}
+
+/* ---------- car section tabs ---------- */
+.car-tabs{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.8rem}
+.car-tabs a{
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.65rem 1.2rem;border:1px solid var(--line-dark);color:var(--ink-dim);
+  transition:background .2s ease,color .2s ease,border-color .2s ease;
+}
+.car-tabs a:hover{color:var(--ink);border-color:var(--messing-deep)}
+.car-tabs a[aria-current]{background:var(--messing-deep);color:var(--alpinweiss);border-color:var(--messing-deep)}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <a class="mark" href="index.html">ZWEI<span>·</span>GARAGE</a>
+  <nav>
+    <a href="e30.html">E30</a>
+    <a href="e34.html">E34</a>
+    <a href="index.html">Index</a>
+  </nav>
+</header>
+
+<div class="car-hero">
+  <div class="wrap">
+    <div class="eyebrow">Akte 02c · Werkstattprotokoll</div>
+    <h1 class="display">E34 · Restoration Videos</h1>
+    <div class="meta eyebrow">
+      <span>17 clips</span><span>Garage floor, not a showroom</span><span>Presented as received, unedited</span>
+    </div>
+    <nav class="car-tabs" aria-label="E34 sections">
+      <a href="e34.html">Overview</a>
+      <a href="e34.html#galerie">Gallery</a>
+      <a href="e34-restoration-videos.html" aria-current="page">Videos — Restoration</a>
+      <a href="e34-restoration.html">Photos — Restoration</a>
+    </nav>
+    <div class="prose reveal" style="margin-top:2rem">
+      <p>The moving half of the workshop record — clips from the same sessions as the
+      <a href="e34-restoration.html" style="border-bottom:1px solid var(--messing-deep);color:var(--ink)">photo log</a>.
+      No editing, no soundtrack, no narration added — just what the phone caught
+      on the day. Tap a frame to play.</p>
+    </div>
+  </div>
+</div>
+
+<section class="block" id="videos" style="border-bottom:none">
+  <div class="wrap">
+    <div class="block-head reveal">
+      <span class="tag">01</span><h2 class="display">Werkstattprotokoll</h2><span class="rule"></span><span class="eyebrow">Video log</span>
+    </div>
+    <div class="gallery">
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.19%20(1).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.19%20(2).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.19%20(3).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.19.mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.20%20(1).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.20%20(10).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.20%20(11).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.20%20(2).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.20%20(3).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.20%20(4).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.20%20(5).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.20%20(6).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.20%20(7).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.20%20(8).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.20%20(9).mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.20.mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e34/videos_restoration/WhatsApp%20Video%202026-07-29%20at%2013.02.21.mp4" controls preload="none"></video></figure>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <span>Akte E34 · Restoration Videos · ZWEI·GARAGE</span>
+  <a href="e34-restoration.html">← Restoration photo log</a>
+</footer>
+
+<script>
+if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+} else {
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+}
+</script>
+</body>
+</html>

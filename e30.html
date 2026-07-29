@@ -1,0 +1,487 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E30 · Alpinweiss — ZWEI Garage</title>
+<meta name="description" content="BMW E30 technical file: schematic, engines, Getrag gearboxes, chassis, wheels, design notes and photo gallery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ================================================================
+   ZWEI — an E30 & E34 garage
+   Palette
+   anthrazit  #17191C   page ground (E34 world)
+   alpinweiss #F1EFE8   paper panel (E30 world)
+   sterling   #A9AEB5   metallic silver
+   blaupause  #8FB4C7   blueprint line
+   messing    #C2A878   single warm accent (brass)
+   hairline   #34383D / #D8D4C8
+   ================================================================ */
+
+:root{
+  --anthrazit:#17191C;
+  --anthrazit-2:#1E2125;
+  --alpinweiss:#F1EFE8;
+  --alpinweiss-2:#E9E6DC;
+  --sterling:#A9AEB5;
+  --sterling-dim:#7C8189;
+  --blaupause:#8FB4C7;
+  --messing:#C2A878;
+  --line-dark:#34383D;
+  --line-light:#D8D4C8;
+  --ink:#1B1D20;
+  --max:1180px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+body{
+  background:var(--anthrazit);
+  color:var(--alpinweiss);
+  font-family:"Archivo",system-ui,sans-serif;
+  font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+::selection{background:var(--messing);color:var(--alpinweiss)}
+
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--blaupause);outline-offset:3px}
+img{max-width:100%;display:block}
+
+/* ---------- type roles ---------- */
+.display{
+  font-family:"Archivo",sans-serif;
+  font-variation-settings:"wdth" 125;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  line-height:1.02;
+}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace;
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.26em;
+  color:var(--sterling-dim);
+}
+.mono{font-family:"IBM Plex Mono",monospace}
+
+/* ---------- header ---------- */
+header.site{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem 1.5rem;
+  background:color-mix(in srgb,var(--anthrazit) 88%,transparent);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line-dark);
+}
+header.site .mark{
+  font-family:"Archivo";font-variation-settings:"wdth" 125;
+  font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.95rem;
+}
+header.site .mark span{color:var(--blaupause)}
+header.site nav{display:flex;gap:1.6rem;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
+header.site nav a{color:var(--sterling);border-bottom:1px solid transparent;padding-bottom:2px}
+header.site nav a:hover,header.site nav a[aria-current]{color:var(--alpinweiss);border-color:var(--messing)}
+
+/* ---------- section scaffolding ---------- */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.5rem}
+section.block{padding:6.5rem 0;border-bottom:1px solid var(--line-dark)}
+.block-head{display:flex;align-items:baseline;gap:1.25rem;margin-bottom:3rem;flex-wrap:wrap}
+.block-head h2{font-size:clamp(1.5rem,3.2vw,2.2rem)}
+.block-head .rule{flex:1;height:1px;background:var(--line-dark);min-width:60px}
+.block-head .tag{font-family:"IBM Plex Mono",monospace;font-size:.7rem;color:var(--blaupause);letter-spacing:.18em}
+
+/* light panels (E30 paper world) */
+.paper{background:var(--alpinweiss);color:var(--ink)}
+.paper section.block{border-color:var(--line-light)}
+.paper .block-head .rule{background:var(--line-light)}
+.paper .eyebrow{color:#8B867A}
+
+/* ---------- spec sheet (Technische Daten) ---------- */
+table.daten{
+  width:100%;border-collapse:collapse;
+  font-family:"IBM Plex Mono",monospace;font-size:.82rem;
+}
+table.daten caption{
+  text-align:left;font-family:"Archivo";font-variation-settings:"wdth" 125;
+  font-weight:600;text-transform:uppercase;letter-spacing:.12em;
+  font-size:.9rem;padding-bottom:.9rem;border-bottom:3px double var(--line-dark);
+}
+.paper table.daten caption{border-color:var(--line-light)}
+table.daten th,table.daten td{
+  text-align:left;padding:.7rem .85rem;vertical-align:top;
+  border-top:1px solid var(--line-dark);
+}
+.paper table.daten th,.paper table.daten td{border-color:var(--line-light)}
+table.daten thead th{
+  font-size:.68rem;text-transform:uppercase;letter-spacing:.16em;
+  color:var(--sterling-dim);border-top:none;padding-top:0;
+}
+table.daten td:last-child,table.daten th:last-child{text-align:right}
+table.daten tr:hover td{background:color-mix(in srgb,var(--messing) 8%,transparent)}
+table.daten .hi{color:var(--messing)}
+
+/* two-column spec layout */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+@media (max-width:800px){.cols{grid-template-columns:1fr}}
+
+/* prose */
+.prose{max-width:60ch;font-weight:350;line-height:1.75;color:color-mix(in srgb,currentColor 82%,transparent)}
+.prose p+p{margin-top:1rem}
+.prose strong{color:currentColor}
+
+/* ---------- schema figure ---------- */
+figure.schema{padding:2.5rem 0 1rem}
+figure.schema svg{width:100%;height:auto}
+figure.schema figcaption{
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--sterling-dim);
+  margin-top:1rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem;
+}
+
+/* ---------- schema photo frame ---------- */
+.schema-photo{position:relative;border:1px solid var(--line-dark);padding:1.6rem;background:var(--anthrazit-2)}
+.paper .schema-photo{border-color:var(--line-light);background:var(--alpinweiss-2)}
+.schema-photo img{width:100%;height:auto;display:block}
+.schema-photo.natural{display:flex;justify-content:center}
+.schema-photo.natural img{width:auto;max-width:100%;height:auto}
+figure.schema .schema-photo{display:flex;align-items:center;justify-content:center;max-height:36rem;overflow:hidden}
+figure.schema .schema-photo img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain}
+.schema-photo i{position:absolute;width:11px;height:11px;border:1px solid var(--blaupause);opacity:.8}
+.schema-photo i:nth-child(1){top:-1px;left:-1px;border-right:none;border-bottom:none}
+.schema-photo i:nth-child(2){top:-1px;right:-1px;border-left:none;border-bottom:none}
+.schema-photo i:nth-child(3){bottom:-1px;left:-1px;border-right:none;border-top:none}
+.schema-photo i:nth-child(4){bottom:-1px;right:-1px;border-left:none;border-top:none}
+.dim-line{display:flex;align-items:center;gap:.75rem;margin-top:1.1rem;
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.18em;color:var(--blaupause)}
+.dim-line .rule{flex:1;height:1px;background:var(--blaupause);opacity:.45}
+.sheet .schema-photo{padding:1rem}
+
+/* ---------- gallery ---------- */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media (max-width:800px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.gallery{grid-template-columns:1fr}}
+.gallery figure{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--anthrazit-2);content-visibility:auto;contain-intrinsic-size:400px 300px}
+.paper .gallery figure{background:var(--alpinweiss-2)}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gallery video{width:100%;height:100%;object-fit:cover;background:#000}
+.gallery figure.video-fig::after{
+  content:"▶";position:absolute;top:.5rem;left:.5rem;
+  width:1.6rem;height:1.6rem;border-radius:50%;background:color-mix(in srgb,var(--anthrazit) 70%,transparent);
+  color:var(--alpinweiss);font-size:.7rem;display:flex;align-items:center;justify-content:center;
+  pointer-events:none;
+}
+.gallery figure:hover img{transform:scale(1.03)}
+.gallery figure.empty{
+  border:1px dashed var(--sterling-dim);
+  display:flex;align-items:center;justify-content:center;
+}
+.gallery figure.empty::after{
+  content:attr(data-slot);
+  font-family:"IBM Plex Mono",monospace;font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--sterling-dim);
+  text-align:center;padding:1rem;
+}
+.gallery figure.empty img{display:none}
+
+/* ---------- footer ---------- */
+footer.site{
+  padding:3rem 1.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--sterling-dim);
+}
+footer.site a{border-bottom:1px solid var(--line-dark)}
+footer.site a:hover{color:var(--alpinweiss);border-color:var(--messing)}
+
+/* ---------- reveal on scroll (subtle, single effect) ---------- */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+/* ---------- chassis plate ---------- */
+.plakette{
+  display:inline-block;position:relative;
+  border:1px solid var(--sterling-dim);
+  padding:1.2rem 2.4rem;margin:1.6rem 0;
+  font-family:"IBM Plex Mono",monospace;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--sterling) 14%,transparent),transparent 60%);
+}
+.plakette .fz{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--sterling-dim);margin-bottom:.45rem}
+.plakette .nr{font-size:clamp(.95rem,2.6vw,1.35rem);letter-spacing:.28em;font-weight:600;color:var(--alpinweiss)}
+.plakette i{position:absolute;width:7px;height:7px;border:1px solid var(--sterling-dim);border-radius:50%}
+.plakette i:nth-child(1){top:6px;left:6px}
+.plakette i:nth-child(2){top:6px;right:6px}
+.plakette i:nth-child(3){bottom:6px;left:6px}
+.plakette i:nth-child(4){bottom:6px;right:6px}
+
+/* ---------- multi-view drawing sheet ---------- */
+.sheet{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2rem;align-items:end;padding:2rem 0 0}
+@media (max-width:800px){.sheet{grid-template-columns:1fr}}
+.sheet svg{width:100%;height:auto}
+.sheet-cap{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-top:1.4rem;
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sterling-dim)}
+
+
+/* paper-page header adaptation */
+body.paper header.site{background:color-mix(in srgb,var(--alpinweiss) 90%,transparent);border-color:var(--line-light)}
+body.paper header.site nav a{color:#6B675C}
+body.paper header.site nav a:hover,body.paper header.site nav a[aria-current]{color:var(--ink)}
+body.paper footer.site{color:#8B867A}
+body.paper footer.site a{border-color:var(--line-light)}
+body.paper footer.site a:hover{color:var(--ink)}
+.car-hero{padding:4.5rem 0 2rem;border-bottom:1px solid var(--line-light)}
+.car-hero h1{font-size:clamp(2.8rem,7vw,5rem)}
+.car-hero .meta{display:flex;gap:2rem;flex-wrap:wrap;margin-top:1rem}
+</style>
+</head>
+<body class="paper">
+
+<header class="site">
+  <a class="mark" href="index.html" style="color:var(--ink)">ZWEI<span>·</span>GARAGE</a>
+  <nav>
+    <a href="e30.html" aria-current="page">E30</a>
+    <a href="e34.html">E34</a>
+    <a href="index.html">Index</a>
+  </nav>
+</header>
+
+<div class="car-hero">
+  <div class="wrap">
+    <div class="eyebrow">Akte 01 · 3er Reihe · 1982 – 1994</div>
+    <h1 class="display">E30 · Alpinweiss</h1>
+    <div class="meta eyebrow">
+      <span>Paint code 146</span><span>Body: two-door saloon</span><span>Drafted in Munich, kept in Romania</span>
+    </div>
+    <figure class="schema reveal" style="color:var(--ink)">
+      <div class="schema-photo">
+        <i></i><i></i><i></i><i></i>
+        <img src="photos/e30/thumbs/WhatsApp Image 2026-07-29 at 11.41.48 (1).jpeg" alt="BMW E30 front three-quarter photo" loading="lazy" decoding="async">
+      </div>
+      <div class="dim-line"><span class="rule"></span><span>BREITE 1 645 MM</span><span class="rule"></span></div>
+      <figcaption><span>Fig. 1 — Vorderansicht / front three-quarter</span></figcaption>
+    </figure>
+    <div class="sheet reveal" style="color:var(--ink)">
+      <div class="schema-photo">
+        <i></i><i></i><i></i><i></i>
+        <img src="photos/e30/blueprint_plan.png" alt="BMW E30 plan view technical blueprint" loading="lazy" decoding="async">
+      </div>
+      <div class="schema-photo">
+        <i></i><i></i><i></i><i></i>
+        <img src="photos/e30/blueprint_lateral.png" alt="BMW E30 side profile technical blueprint" loading="lazy" decoding="async">
+      </div>
+      <div class="schema-photo">
+        <i></i><i></i><i></i><i></i>
+        <img src="photos/e30/blueprint_rear.png" alt="BMW E30 rear view technical blueprint" loading="lazy" decoding="async">
+      </div>
+    </div>
+    <div class="sheet-cap">
+      <span>Fig. 2 — Draufsicht / plan · Fig. 3 — Seitenansicht / side · Fig. 4 — Heckansicht / rear</span>
+      <span>Blueprint: Hamster3D</span>
+
+    </div>
+  </div>
+</div>
+
+<section class="block" id="motor">
+  <div class="wrap">
+    <div class="block-head reveal">
+      <span class="tag">02</span><h2 class="display">Motor</h2><span class="rule"></span><span class="eyebrow">Engines</span>
+    </div>
+    <div class="prose reveal" style="margin-bottom:2.5rem">
+      <p>The E30 range ran on three engine families: the veteran <strong>M10</strong> four,
+      the small-block <strong>M40/M42</strong> fours that replaced it, and the belt-driven
+      <strong>M20</strong> "baby six" — the engine that gave the 325i its reputation. All of
+      them sit longitudinally, canted 30° to the right, driving the rear wheels
+      the way nature intended.</p>
+    </div>
+    <table class="daten reveal">
+      <caption>Motorenprogramm</caption>
+      <thead><tr><th>Model</th><th>Engine</th><th>Layout</th><th>Displacement</th><th>Output</th></tr></thead>
+      <tbody>
+        <tr><td>316</td><td>M10B18</td><td>I4, carb / 8v</td><td>1 766 cc</td><td>90 hp</td></tr>
+        <tr><td>316i</td><td>M40B16</td><td>I4, SOHC 8v</td><td>1 596 cc</td><td>102 hp</td></tr>
+        <tr><td>318i</td><td>M40B18</td><td>I4, SOHC 8v</td><td>1 796 cc</td><td>113 hp</td></tr>
+        <tr><td>318is</td><td>M42B18</td><td>I4, DOHC 16v</td><td>1 796 cc</td><td>136 hp</td></tr>
+        <tr><td>320i</td><td>M20B20</td><td>I6, SOHC 12v</td><td>1 990 cc</td><td>129 hp</td></tr>
+        <tr><td class="hi">325i</td><td class="hi">M20B25</td><td>I6, SOHC 12v</td><td>2 494 cc</td><td class="hi">171 hp</td></tr>
+        <tr><td>324td</td><td>M21D24</td><td>I6 turbodiesel</td><td>2 443 cc</td><td>115 hp</td></tr>
+        <tr><td>M3</td><td>S14B23</td><td>I4, DOHC 16v</td><td>2 302 cc</td><td>195 – 215 hp</td></tr>
+      </tbody>
+    </table>
+    <div class="prose reveal" style="margin-top:1.5rem">
+      <p><strong>This particular car</strong> has since been swapped to the <strong>M52B28</strong> —
+      2.8 litres of later, VANOS-equipped six out of the E36/E39 parts bin, in place of the
+      original four. More displacement and a stiffer bottom end than anything the M10/M20
+      line offered from the factory.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="getriebe">
+  <div class="wrap cols">
+    <div>
+      <div class="block-head reveal">
+        <span class="tag">03</span><h2 class="display">Getriebe</h2><span class="rule"></span>
+      </div>
+      <div class="prose reveal">
+        <p>Manual E30s got Getrag's small-case boxes: the <strong>240</strong> behind the
+        fours and the 320i, the stronger <strong>260</strong> behind the 325i. Early
+        European M3s used the Getrag 265 with a dogleg first gear — first is
+        back and left, where the racetrack wants it. Automatics were ZF
+        three- and four-speeds.</p>
+        <p>Power reaches a differential in sizes 168 mm (small case) or
+        188 mm (medium case, 325i/M3), with limited-slip 25 % lock as the
+        factory option worth hunting for.</p>
+      </div>
+    </div>
+    <div>
+      <table class="daten reveal" style="margin-top:1rem">
+        <caption>Kraftübertragung</caption>
+        <thead><tr><th>Unit</th><th>Type</th><th>Fitted to</th></tr></thead>
+        <tbody>
+          <tr><td>Getrag 240</td><td>5-sp manual</td><td>316i – 320i</td></tr>
+          <tr><td>Getrag 260</td><td>5-sp manual</td><td>325i</td></tr>
+          <tr><td>Getrag 265</td><td>5-sp dogleg</td><td>M3 (Euro)</td></tr>
+          <tr><td>ZF 3HP22</td><td>3-sp auto</td><td>early fours</td></tr>
+          <tr><td>ZF 4HP22</td><td>4-sp auto</td><td>sixes</td></tr>
+          <tr><td>Diff 168 mm</td><td>open / LSD</td><td>fours, 320i</td></tr>
+          <tr><td>Diff 188 mm</td><td>open / LSD</td><td>325i, M3</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fahrwerk">
+  <div class="wrap">
+    <div class="block-head reveal">
+      <span class="tag">04</span><h2 class="display">Fahrwerk & Karosserie</h2><span class="rule"></span><span class="eyebrow">Chassis</span>
+    </div>
+    <div class="cols">
+      <div class="prose reveal">
+        <p>The E30 is a steel unibody with <strong>MacPherson struts</strong> up front and
+        BMW's <strong>15° semi-trailing arm</strong> rear axle — the geometry that gives
+        the car its famous mid-corner chattiness. Steering is rack-and-pinion,
+        brakes are discs front (vented on the 325i and M3) with discs or drums
+        at the rear depending on model.</p>
+        <p>It's a car you can service on jack stands with a basic metric set —
+        which is exactly how this one is kept alive.</p>
+      </div>
+      <table class="daten reveal">
+        <caption>Aufhängung</caption>
+        <tbody>
+          <tr><td>Front</td><td>MacPherson strut, anti-roll bar</td></tr>
+          <tr><td>Rear</td><td>Semi-trailing arms at 15°, coil springs</td></tr>
+          <tr><td>Steering</td><td>Rack &amp; pinion, opt. power assist</td></tr>
+          <tr><td>Brakes F</td><td>Discs (vented, 325i / M3)</td></tr>
+          <tr><td>Brakes R</td><td>Drums / discs by model</td></tr>
+          <tr><td>Fuel tank</td><td>55 – 64 l, under boot floor</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="raeder">
+  <div class="wrap cols">
+    <div>
+      <div class="block-head reveal">
+        <span class="tag">05</span><h2 class="display">Räder</h2><span class="rule"></span>
+      </div>
+      <div class="prose reveal">
+        <p>Bolt pattern <strong>4 × 100</strong>, centre bore <strong>57.1 mm</strong> — the numbers every
+        E30 owner knows by heart. The period-correct hierarchy runs from steel
+        wheels with hubcaps, through the 14-inch "bottlecap" alloys, to the
+        BBS cross-spoke baskets that define the look of the car.</p>
+      </div>
+    </div>
+    <table class="daten reveal" style="margin-top:1rem">
+      <caption>Radkatalog</caption>
+      <thead><tr><th>Wheel</th><th>Size</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Steel + cap</td><td>14 × 5.5"</td><td>base spec</td></tr>
+        <tr><td>Bottlecaps</td><td>14 × 6"</td><td>the honest classic</td></tr>
+        <tr><td class="hi">BBS baskets</td><td>14 × 6.5"</td><td>cross-spoke, iconic</td></tr>
+        <tr><td>M3 baskets</td><td>15 × 7"</td><td>ET tighter, S14 only</td></tr>
+        <tr><td>Fitment</td><td>4 × 100 · CB 57.1</td><td>ET ~30 – 41</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="block" id="design">
+  <div class="wrap">
+    <div class="block-head reveal">
+      <span class="tag">06</span><h2 class="display">Design</h2><span class="rule"></span><span class="eyebrow">Formsprache</span>
+    </div>
+    <div class="prose reveal">
+      <p>The E30 kept the forward-leaning <strong>shark nose</strong>, quad round headlights
+      and the <strong>Hofmeister kink</strong> at the C-pillar — drawn under design chief
+      Claus Luthe's studio with ruler-straight discipline. Chrome bumpers on
+      early cars, body-colour plastic after the 1987 facelift; purists argue
+      about it at every meet, and this garage politely declines to take sides
+      in writing.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="galerie">
+  <div class="wrap">
+    <div class="block-head reveal">
+      <span class="tag">07</span><h2 class="display">Galerie</h2><span class="rule"></span><span class="eyebrow">Own photos</span>
+    </div>
+    <div class="gallery">
+      <figure class="reveal"><a href="photos/e30/WhatsApp Image 2026-07-29 at 11.41.48.jpeg" target="_blank" rel="noopener"><img src="photos/e30/thumbs/WhatsApp Image 2026-07-29 at 11.41.48.jpeg" alt="BMW E30 front three-quarter, dealer lot" loading="lazy" decoding="async"></a></figure>
+      <figure class="reveal"><a href="photos/e30/WhatsApp Image 2026-07-29 at 11.41.48 (1).jpeg" target="_blank" rel="noopener"><img src="photos/e30/thumbs/WhatsApp Image 2026-07-29 at 11.41.48 (1).jpeg" alt="BMW E30 front three-quarter, dealer lot" loading="lazy" decoding="async"></a></figure>
+      <figure class="reveal"><a href="photos/e30/WhatsApp Image 2026-07-29 at 11.41.48 (2).jpeg" target="_blank" rel="noopener"><img src="photos/e30/thumbs/WhatsApp Image 2026-07-29 at 11.41.48 (2).jpeg" alt="BMW E30 front three-quarter, alternate angle" loading="lazy" decoding="async"></a></figure>
+      <figure class="reveal"><a href="photos/e30/WhatsApp Image 2026-07-29 at 11.41.48 (3).jpeg" target="_blank" rel="noopener"><img src="photos/e30/thumbs/WhatsApp Image 2026-07-29 at 11.41.48 (3).jpeg" alt="BMW E30 rear three-quarter" loading="lazy" decoding="async"></a></figure>
+      <figure class="reveal"><a href="photos/e30/WhatsApp Image 2026-07-29 at 11.41.48 (4).jpeg" target="_blank" rel="noopener"><img src="photos/e30/thumbs/WhatsApp Image 2026-07-29 at 11.41.48 (4).jpeg" alt="BMW E30 rear three-quarter, dual exhaust" loading="lazy" decoding="async"></a></figure>
+      <figure class="reveal"><a href="photos/e30/WhatsApp Image 2026-07-29 at 11.41.49.jpeg" target="_blank" rel="noopener"><img src="photos/e30/thumbs/WhatsApp Image 2026-07-29 at 11.41.49.jpeg" alt="BMW E30 interior, steering wheel and dash" loading="lazy" decoding="async"></a></figure>
+      <figure class="reveal"><a href="photos/e30/WhatsApp Image 2026-07-29 at 11.41.49 (1).jpeg" target="_blank" rel="noopener"><img src="photos/e30/thumbs/WhatsApp Image 2026-07-29 at 11.41.49 (1).jpeg" alt="BMW E30 interior, center console and shifter" loading="lazy" decoding="async"></a></figure>
+      <figure class="reveal"><a href="photos/e30/WhatsApp Image 2026-07-29 at 11.41.49 (2).jpeg" target="_blank" rel="noopener"><img src="photos/e30/thumbs/WhatsApp Image 2026-07-29 at 11.41.49 (2).jpeg" alt="BMW E30 on the road, drifting" loading="lazy" decoding="async"></a></figure>
+      <figure class="reveal"><a href="photos/e30/WhatsApp Image 2026-07-29 at 11.41.49 (3).jpeg" target="_blank" rel="noopener"><img src="photos/e30/thumbs/WhatsApp Image 2026-07-29 at 11.41.49 (3).jpeg" alt="BMW E30 underbody, differential detail" loading="lazy" decoding="async"></a></figure>
+      <figure class="reveal"><a href="photos/e30/rimes.jpg" target="_blank" rel="noopener"><img src="photos/e30/thumbs/rimes.jpg" alt="BMW E30 wheel and tyre detail" loading="lazy" decoding="async"></a></figure>
+      <figure class="reveal"><a href="photos/e30/suspension.jpg" target="_blank" rel="noopener"><img src="photos/e30/thumbs/suspension.jpg" alt="BMW E30 rear suspension, coilover detail" loading="lazy" decoding="async"></a></figure>
+      <figure class="reveal"><a href="photos/e30/underneath.jpg" target="_blank" rel="noopener"><img src="photos/e30/thumbs/underneath.jpg" alt="BMW E30 underneath, differential and exhaust" loading="lazy" decoding="async"></a></figure>
+      <figure class="reveal video-fig"><video src="photos/e30/WhatsApp%20Video%202026-07-29%20at%2012.02.17.mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e30/WhatsApp%20Video%202026-07-29%20at%2012.03.14.mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e30/WhatsApp%20Video%202026-07-29%20at%2012.04.17.mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e30/WhatsApp%20Video%202026-07-29%20at%2012.05.18.mp4" controls preload="none"></video></figure>
+      <figure class="reveal video-fig"><video src="photos/e30/WhatsApp%20Video%202026-07-29%20at%2012.07.56.mp4" controls preload="none"></video></figure>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <span>Akte E30 · ZWEI·GARAGE</span>
+  <a href="e34.html">Next file: E34 · Sterlingsilber →</a>
+</footer>
+
+<script>
+// gallery: mark missing photos as empty slots
+document.querySelectorAll('.gallery img').forEach(function(img){
+  img.addEventListener('error', function(){ img.closest('figure').classList.add('empty'); });
+  if (img.complete && img.naturalWidth === 0) img.closest('figure').classList.add('empty');
+});
+// subtle scroll reveal
+if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+} else {
+  document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+}
+
+</script>
+</body>
+</html>
