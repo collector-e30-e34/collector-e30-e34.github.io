@@ -193,6 +193,25 @@ figure.schema .schema-photo img{width:auto;height:auto;max-width:100%;max-height
 }
 .gallery figure.empty img{display:none}
 
+/* ---------- colour swatches ---------- */
+.swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1.5rem 1.1rem}
+.swatch .chip{aspect-ratio:1/1;border:1px solid var(--line-dark)}
+.paper .swatch .chip{border-color:var(--line-light)}
+.swatch.this-car .chip{outline:2px solid var(--messing);outline-offset:3px}
+.swatch .label{margin-top:.6rem;font-family:"IBM Plex Mono",monospace}
+.swatch .name{font-size:.72rem;letter-spacing:.03em;display:block}
+.swatch .code{font-size:.66rem;color:var(--sterling-dim);display:block;margin-top:.2rem}
+.paper .swatch .code{color:#8B867A}
+.swatch .years{font-size:.62rem;color:var(--sterling-dim);display:block;margin-top:.1rem}
+.paper .swatch .years{color:#8B867A}
+.swatch.this-car .name{color:var(--messing)}
+
+/* ---------- trivia / fact cards ---------- */
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem 1.5rem}
+.fact{padding:1.2rem 1.4rem;border-left:2px solid var(--messing);background:color-mix(in srgb,var(--messing) 7%,transparent)}
+.fact .tag{display:block;font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--messing);margin-bottom:.55rem}
+.fact p{font-size:.88rem;line-height:1.65}
+
 /* ---------- footer ---------- */
 footer.site{
   padding:3rem 1.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
@@ -250,6 +269,7 @@ body.paper footer.site a:hover{color:var(--ink)}
   <nav>
     <a href="e30.html" aria-current="page">E30</a>
     <a href="e34.html">E34</a>
+    <a href="diffs.html">Diffs</a>
     <a href="index.html">Index</a>
   </nav>
 </header>
@@ -339,8 +359,11 @@ body.paper footer.site a:hover{color:var(--ink)}
         back and left, where the racetrack wants it. Automatics were ZF
         three- and four-speeds.</p>
         <p>Power reaches a differential in sizes 168 mm (small case) or
-        188 mm (medium case, 325i/M3), with limited-slip 25 % lock as the
-        factory option worth hunting for.</p>
+        188 mm (medium case, 325i/M3). Limited-slip was a factory option on
+        the sixes — 25 % lock on the 325i, a stronger 40 % unit standard on
+        the M3 — worth hunting for on any car that isn't one. The full
+        cross-model diff picture, LSD or open, is on the
+        <a href="diffs.html#dreier" style="border-bottom:1px solid var(--messing)">Diffs page</a>.</p>
       </div>
     </div>
     <div>
@@ -353,8 +376,9 @@ body.paper footer.site a:hover{color:var(--ink)}
           <tr><td>Getrag 265</td><td>5-sp dogleg</td><td>M3 (Euro)</td></tr>
           <tr><td>ZF 3HP22</td><td>3-sp auto</td><td>early fours</td></tr>
           <tr><td>ZF 4HP22</td><td>4-sp auto</td><td>sixes</td></tr>
-          <tr><td>Diff 168 mm</td><td>open / LSD</td><td>fours, 320i</td></tr>
-          <tr><td>Diff 188 mm</td><td>open / LSD</td><td>325i, M3</td></tr>
+          <tr><td>Diff 168 mm</td><td>Open std. · LSD rare option</td><td>fours, 320i</td></tr>
+          <tr><td>Diff 188 mm</td><td>Open std. · LSD 25% option</td><td>325i</td></tr>
+          <tr class="hi"><td>Diff 188 mm</td><td>LSD standard, 40%</td><td>M3</td></tr>
         </tbody>
       </table>
     </div>
@@ -434,10 +458,125 @@ body.paper footer.site a:hover{color:var(--ink)}
   </div>
 </section>
 
+<section class="block" id="farben">
+  <div class="wrap">
+    <div class="block-head reveal">
+      <span class="tag">07</span><h2 class="display">Farben</h2><span class="rule"></span><span class="eyebrow">Lackierungen</span>
+    </div>
+    <div class="prose reveal" style="margin-bottom:2.5rem">
+      <p>BMW ran an enormous colour book across 1982 – 1994 — flat solids for the
+      value-conscious, deep metallics for everyone else. A dozen highlights below,
+      spanning the whole production run. Swatches are close approximations only:
+      no screen has ever done justice to a metallic flake coat.</p>
+    </div>
+    <div class="swatch-grid reveal">
+      <div class="swatch this-car">
+        <div class="chip" style="background:#F2F0E8"></div>
+        <div class="label"><span class="name">Alpinweiß</span><span class="code">Code 146 · solid</span><span class="years">1982 – 1987 · this car</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#17181B"></div>
+        <div class="label"><span class="name">Schwarz</span><span class="code">Code 086 · solid</span><span class="years">1982 – 1994</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#A83627"></div>
+        <div class="label"><span class="name">Zinnoberrot</span><span class="code">Code 138 · solid</span><span class="years">1984 – 1990</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#1D3A63"></div>
+        <div class="label"><span class="name">Lapisblau</span><span class="code">Code 173 · solid</span><span class="years">1982 – 1987</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#C7AE84"></div>
+        <div class="label"><span class="name">Gazellenbeige</span><span class="code">Code 128 · solid</span><span class="years">1984 – 1987</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#8F7852"></div>
+        <div class="label"><span class="name">Bronzitbeige met.</span><span class="code">Code 139 · metallic</span><span class="years">1982 – 1990</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#202126"></div>
+        <div class="label"><span class="name">Diamantschwarz met.</span><span class="code">Code 181 · metallic</span><span class="years">1989 – 1994</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#64737A"></div>
+        <div class="label"><span class="name">Delphin met.</span><span class="code">Code 184 · metallic</span><span class="years">1984 – 1990</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#2C5240"></div>
+        <div class="label"><span class="name">Malachitgrün met.</span><span class="code">Code 205 · metallic</span><span class="years">1986 – 1991</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#7E2A28"></div>
+        <div class="label"><span class="name">Calypsorot met.</span><span class="code">Code 252 · metallic</span><span class="years">1989 – 1994</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#9A9D9C"></div>
+        <div class="label"><span class="name">Granitsilber met.</span><span class="code">Code 237 · metallic</span><span class="years">1990 – 1994</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#1B3350"></div>
+        <div class="label"><span class="name">Macaoblau met.</span><span class="code">Code 250 · metallic</span><span class="years">1988 – 1991</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="kuriositaeten">
+  <div class="wrap">
+    <div class="block-head reveal">
+      <span class="tag">08</span><h2 class="display">Kuriositäten</h2><span class="rule"></span><span class="eyebrow">Trivia worth knowing</span>
+    </div>
+    <div class="fact-grid">
+      <div class="fact reveal">
+        <span class="tag">Body styles</span>
+        <p>Sedan (two- and four-door), Touring wagon from 1988, factory
+        cabriolet, and the Baur TC — a targa-roofed conversion built by
+        coachbuilder Baur in Stuttgart and sold straight through BMW dealers.</p>
+      </div>
+      <div class="fact reveal">
+        <span class="tag">325iX · 1985</span>
+        <p>BMW's first four-wheel-drive 3 Series: a viscous-coupling centre
+        differential splitting torque front to rear, a decade before
+        "xDrive" was even a word.</p>
+      </div>
+      <div class="fact reveal">
+        <span class="tag">Homologation special</span>
+        <p>Group A touring cars needed 5,000 road-going M3s built. Demand kept
+        the line running to 17,970 units across Evolution, Evolution II,
+        Cecotto, Ravaglia and the final Sport Evolution.</p>
+      </div>
+      <div class="fact reveal">
+        <span class="tag">Sport Evolution · 1990</span>
+        <p>The last and wildest E30 M3: a height-adjustable front splitter, a
+        taller rear wing, and the S14 four bored out to 2.5 litres for 238 hp
+        — only 600 built.</p>
+      </div>
+      <div class="fact reveal">
+        <span class="tag">No cupholders</span>
+        <p>A period BMW design decision still litigated at every meet. The
+        glovebox and a coin tray were considered sufficient for a driver's car.</p>
+      </div>
+      <div class="fact reveal">
+        <span class="tag">Check Control</span>
+        <p>An amber strip of pictogram warning lights across the top of the
+        instrument cluster, with a synthesised voice on some markets reading
+        the warning aloud in German.</p>
+      </div>
+      <div class="fact reveal">
+        <span class="tag">320is</span>
+        <p>Built only for Italy and Portugal: a destroked, 1 990 cc version
+        of the M3's S14 four, engineered purely to duck a punitive tax
+        bracket above 2.0 litres.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="block" id="galerie">
   <div class="wrap">
     <div class="block-head reveal">
-      <span class="tag">07</span><h2 class="display">Galerie</h2><span class="rule"></span><span class="eyebrow">Own photos</span>
+      <span class="tag">09</span><h2 class="display">Galerie</h2><span class="rule"></span><span class="eyebrow">Own photos</span>
     </div>
     <div class="gallery">
       <figure class="reveal"><a href="photos/e30/WhatsApp Image 2026-07-29 at 11.41.48.jpeg" target="_blank" rel="noopener"><img src="photos/e30/thumbs/WhatsApp Image 2026-07-29 at 11.41.48.jpeg" alt="BMW E30 front three-quarter, dealer lot" loading="lazy" decoding="async"></a></figure>
