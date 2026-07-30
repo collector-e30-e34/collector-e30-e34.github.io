@@ -188,6 +188,22 @@ figure.schema figcaption{
 }
 .gallery figure.empty img{display:none}
 
+/* ---------- colour swatches ---------- */
+.swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1.5rem 1.1rem}
+.swatch .chip{aspect-ratio:1/1;border:1px solid var(--line-dark)}
+.swatch.this-car .chip{outline:2px solid var(--messing-deep);outline-offset:3px}
+.swatch .label{margin-top:.6rem;font-family:"IBM Plex Mono",monospace}
+.swatch .name{font-size:.72rem;letter-spacing:.03em;display:block}
+.swatch .code{font-size:.66rem;color:var(--ink-dim);display:block;margin-top:.2rem}
+.swatch .years{font-size:.62rem;color:var(--ink-dim);display:block;margin-top:.1rem}
+.swatch.this-car .name{color:var(--messing-deep)}
+
+/* ---------- trivia / fact cards ---------- */
+.fact-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.2rem 1.5rem}
+.fact{padding:1.2rem 1.4rem;border-left:2px solid var(--messing-deep);background:color-mix(in srgb,var(--messing-deep) 10%,transparent)}
+.fact .tag{display:block;font-family:"IBM Plex Mono",monospace;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--messing-deep);margin-bottom:.55rem}
+.fact p{font-size:.88rem;line-height:1.65}
+
 /* ---------- footer ---------- */
 footer.site{
   padding:3rem 1.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
@@ -247,6 +263,7 @@ footer.site a:hover{color:var(--ink);border-color:var(--messing-deep)}
   <nav>
     <a href="e30.html">E30</a>
     <a href="e34.html" aria-current="page">E34</a>
+    <a href="diffs.html">Diffs</a>
     <a href="index.html">Index</a>
   </nav>
 </header>
@@ -260,6 +277,8 @@ footer.site a:hover{color:var(--ink);border-color:var(--messing-deep)}
     </div>
     <nav class="car-tabs" aria-label="E34 sections">
       <a href="e34.html" aria-current="page">Overview</a>
+      <a href="e34.html#farben">Colours</a>
+      <a href="e34.html#kuriositaeten">Trivia</a>
       <a href="e34.html#galerie">Gallery</a>
       <a href="e34-restoration-videos.html">Videos — Restoration</a>
       <a href="e34-restoration.html">Photos — Restoration</a>
@@ -374,8 +393,10 @@ footer.site a:hover{color:var(--ink);border-color:var(--messing-deep)}
         late in life, a six-speed. Automatics evolved from the ZF 4HP22
         four-speed to the electronic 5HP18 and the 5HP30 behind the 540i —
         one of the first five-speed autos in the class.</p>
-        <p>All of it feeds a 188 mm or 210 mm differential depending on
-        torque, with LSD optional on sport models.</p>
+        <p>All of it feeds a 188 mm or 210 mm differential. LSD was a rare
+        factory option on the sixes, standard at 25 % lock on the M5. The
+        full cross-model diff picture, LSD or open, is on the
+        <a href="diffs.html#fuenfer" style="border-bottom:1px solid var(--messing-deep)">Diffs page</a>.</p>
       </div>
     </div>
     <div>
@@ -389,6 +410,8 @@ footer.site a:hover{color:var(--ink);border-color:var(--messing-deep)}
           <tr><td>ZF 4HP22</td><td>4-sp auto</td><td>sixes</td></tr>
           <tr><td>ZF 5HP18</td><td>5-sp auto</td><td>M50 sixes</td></tr>
           <tr><td>ZF 5HP30</td><td>5-sp auto</td><td>540i</td></tr>
+          <tr><td>Diff 188/210 mm</td><td>Open std. · LSD rare option</td><td>518i – 540i</td></tr>
+          <tr class="hi"><td>Diff 210 mm</td><td>LSD standard, 25%</td><td>M5</td></tr>
         </tbody>
       </table>
     </div>
@@ -469,10 +492,125 @@ footer.site a:hover{color:var(--ink);border-color:var(--messing-deep)}
   </div>
 </section>
 
+<section class="block" id="farben">
+  <div class="wrap">
+    <div class="block-head reveal">
+      <span class="tag">08</span><h2 class="display">Farben</h2><span class="rule"></span><span class="eyebrow">Lackierungen</span>
+    </div>
+    <div class="prose reveal" style="margin-bottom:2.5rem">
+      <p>The E34's colour book ran from restrained solids to deep, cool
+      metallics — a natural fit for the car's machined, wedge-shaped surfacing.
+      A dozen highlights below. Swatches are close approximations only: no
+      screen has ever done justice to a metallic flake coat.</p>
+    </div>
+    <div class="swatch-grid reveal">
+      <div class="swatch this-car">
+        <div class="chip" style="background:#A9AEB5"></div>
+        <div class="label"><span class="name">Sterlingsilber met.</span><span class="code">Code 244 · metallic</span><span class="years">this car</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#F2F0E8"></div>
+        <div class="label"><span class="name">Alpinweiß III</span><span class="code">Code 300 · solid</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#17181B"></div>
+        <div class="label"><span class="name">Schwarz</span><span class="code">Code 086 · solid</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#202126"></div>
+        <div class="label"><span class="name">Diamantschwarz met.</span><span class="code">Code 181 · metallic</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#9A9D9C"></div>
+        <div class="label"><span class="name">Granitsilber met.</span><span class="code">Code 237 · metallic</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#7E2A28"></div>
+        <div class="label"><span class="name">Calypsorot met.</span><span class="code">Code 252 · metallic</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#1E3A68"></div>
+        <div class="label"><span class="name">Royalblau met.</span><span class="code">Code 198 · metallic</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#2C5240"></div>
+        <div class="label"><span class="name">Malachitgrün met.</span><span class="code">Code 205 · metallic</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#C7B48E"></div>
+        <div class="label"><span class="name">Kaschmirbeige met.</span><span class="code">Code 301 · metallic</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#234B72"></div>
+        <div class="label"><span class="name">Avusblau met.</span><span class="code">Code 276 · metallic</span><span class="years">M5 icon</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#6C6F71"></div>
+        <div class="label"><span class="name">Fjordgrau met.</span><span class="code">Code 310 · metallic</span></div>
+      </div>
+      <div class="swatch">
+        <div class="chip" style="background:#9E2B27"></div>
+        <div class="label"><span class="name">Misanorot</span><span class="code">Code 236 · solid</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="kuriositaeten">
+  <div class="wrap">
+    <div class="block-head reveal">
+      <span class="tag">09</span><h2 class="display">Kuriositäten</h2><span class="rule"></span><span class="eyebrow">Trivia worth knowing</span>
+    </div>
+    <div class="fact-grid">
+      <div class="fact reveal">
+        <span class="tag">M5 by hand</span>
+        <p>Every E34 M5 was assembled at BMW M's Garching works from painted
+        shells shipped in from Dingolfing. Each car received a numbered
+        plaque on the centre console and a bespoke wood shift knob.</p>
+      </div>
+      <div class="fact reveal">
+        <span class="tag">11,989 built</span>
+        <p>Total E34 M5 production across 1988 – 1995, of which only 891 were
+        the Touring wagon — at launch, the world's fastest production estate
+        car.</p>
+      </div>
+      <div class="fact reveal">
+        <span class="tag">525iX</span>
+        <p>Permanent all-wheel drive via a viscous-coupling centre diff and
+        multi-plate clutch: a genuine four-wheel-drive executive saloon a
+        decade before it was fashionable.</p>
+      </div>
+      <div class="fact reveal">
+        <span class="tag">First 5er wagon</span>
+        <p>The E34 introduced the Touring body style to the range, and with
+        it optional self-levelling rear suspension and load-adaptive
+        damping.</p>
+      </div>
+      <div class="fact reveal">
+        <span class="tag">EDC</span>
+        <p>Electronic Damper Control let the driver soften or firm the ride
+        from a dash switch — one of the first adjustable-damping systems
+        fitted to a BMW.</p>
+      </div>
+      <div class="fact reveal">
+        <span class="tag">cd ≈ 0.30</span>
+        <p>Flush glazing, hidden gutters and a shallow front end made the E34
+        one of the slipperiest three-box sedans of its era.</p>
+      </div>
+      <div class="fact reveal">
+        <span class="tag">Individual program</span>
+        <p>Buyers could special-order paint and trim combinations straight
+        from the factory, outside the standard catalogue — those cars are
+        vanishingly rare today.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="block" id="galerie">
   <div class="wrap">
     <div class="block-head reveal">
-      <span class="tag">08</span><h2 class="display">Galerie</h2><span class="rule"></span><span class="eyebrow">Own photos</span>
+      <span class="tag">10</span><h2 class="display">Galerie</h2><span class="rule"></span><span class="eyebrow">Own photos</span>
     </div>
     <div class="gallery">
       <figure class="reveal"><a href="photos/e34/Gallery/0__.jpeg" target="_blank" rel="noopener"><img src="photos/e34/Gallery/thumbs/0__.jpeg" alt="BMW E34 gallery photo 1" loading="lazy" decoding="async"></a></figure>
